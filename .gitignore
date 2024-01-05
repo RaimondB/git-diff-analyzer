@@ -1,0 +1,24 @@
+# Ignore build output folders
+bin/
+obj/
+
+# Ignore NuGet package folder
+packages/
+
+# Ignore Visual Studio files
+.vs/
+*.suo
+*.user
+*.sln.docstates
+
+# Ignore ReSharper files
+_ReSharper*/
+
+# Ignore dotnet test results
+TestResults/
+
+# Ignore Visual Studio Code settings
+.vscode/**
+!.vscode/tasks.json
+!.vscode/launch.json
+

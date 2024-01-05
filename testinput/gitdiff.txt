@@ -1,0 +1,91 @@
+diff --git a/docs/concepts/choreography-orchestration.md b/docs/concepts/choreography-orchestration.md
+index ece6143..5ec68e1 100644
+--- a/docs/concepts/choreography-orchestration.md
++++ b/docs/concepts/choreography-orchestration.md
+@@ -19 +19 @@ While they might seem alike at first glance they are actually quite different in
+-Agreements are made up front on the total choreography. 
++Agreements are made up front on the total choreography.
+@@ -33 +33 @@ Choreography is inherently asynchronous and reactive in nature
+-Performers play to the notes and the partiture defined by the composer. For the execution there is a conductor, that continuously monitors and adjust what performer do by keeping a close eye on what is happening, and giving signals to adjust the performance through his baton. Deviations from the plan will be managed by the conductor, and the performers follow in suit.
++Performers play to the notes and the score defined by the composer. For the execution there is a conductor, that continuously monitors and adjust what performer do by keeping a close eye on what is happening, and giving signals to adjust the performance through his baton. Deviations from the plan will be managed by the conductor, and the performers follow in suit.
+@@ -52 +52 @@ For reference a short summary here as well in the table below.
+-| Coordination responsibility | Central | Decentral |
++| Coordination responsibility | Centralized | Decentralized |
+@@ -93,2 +93,2 @@ See the diagrams below to highlight the differences between Choreography, Synchr
+-- there is more "one-way" communication, each system taking the responsibility to decided about the needed actions
+-- no central system needs to change, when one of the collaborating systems is changed
++* there is more "one-way" communication, each system taking the responsibility to decided about the needed actions
++* no central system needs to change, when one of the collaborating systems is changed
+@@ -100,2 +100,2 @@ See the diagrams below to highlight the differences between Choreography, Synchr
+-- there is a single point of control that can be analysed and debugged
+-- there is full visibility of the process in a single place
++* there is a single point of control that can be analysed and debugged
++* there is full visibility of the process in a single place
+@@ -105,2 +105,2 @@ See the diagrams below to highlight the differences between Choreography, Synchr
+-- Event based process monitoring
+-- Distributed Tracing
++* Event based process monitoring
++* Distributed Tracing
+@@ -110,2 +110,2 @@ See the diagrams below to highlight the differences between Choreography, Synchr
+-- multiple processes can happen in parallel and do not have to wait for centralized coordination
+-- each system itself is responsible to wait for the right events to take action
++* multiple processes can happen in parallel and do not have to wait for centralized coordination
++* each system itself is responsible to wait for the right events to take action
+@@ -115,2 +115,2 @@ See the diagrams below to highlight the differences between Choreography, Synchr
+-- Orchestration requires a centralized component to function that becomes a single point of failure
+-- Choreography can keep continue running (at least partly) when systems in the chain are not all functioning correctly at the same time.
++* Orchestration requires a centralized component to function that becomes a single point of failure
++* Choreography can keep continue running (at least partly) when systems in the chain are not all functioning correctly at the same time.
+@@ -120,2 +120,2 @@ See the diagrams below to highlight the differences between Choreography, Synchr
+-- After a failure, each of the systems will have its own recovery logic, thereby spreading the complexity. Instead of trying to resolve all possible edge cases from a single central system.
+-- Systems will recover in parallel thereby having a faster recovery time.
++* After a failure, each of the systems will have its own recovery logic, thereby spreading the complexity. Instead of trying to resolve all possible edge cases from a single central system.
++* Systems will recover in parallel thereby having a faster recovery time.
+@@ -130,4 +130,4 @@ Advice when making the trade-off:
+-- **Reduce coordination complexity first**: In general, if there is a high system coordination complexity (many "ping-pong's" between systems), try to reduce that first. The current boundaries for the systems and/or domains might not be right.
+-- **Opt for Choreography, when:** requirements around agility of change and runtime robustness are most important, and the system coordination complexity is moderate;
+-- **Opt for Synchronous Orchestration, when:**  If there is a high system coordination complexity, agility of change and robustness is less important.
+-- **Opt for Asynchronous Orchestration, when:**  If there is a high system coordination complexity, robustness is more important and agility of change is less important.
++* **Reduce coordination complexity first**: In general, if there is a high system coordination complexity (many "ping-pong's" between systems), try to reduce that first. The current boundaries for the systems and/or domains might not be right.
++* **Opt for Choreography, when:** requirements around agility of change and runtime robustness are most important, and the system coordination complexity is moderate;
++* **Opt for Synchronous Orchestration, when:**  If there is a high system coordination complexity, agility of change and robustness is less important.
++* **Opt for Asynchronous Orchestration, when:**  If there is a high system coordination complexity, robustness is more important and agility of change is less important.
+diff --git a/docs/concepts/cloud-agnostic.md b/docs/concepts/cloud-agnostic.md
+index 3b73d8e..cb36c0e 100644
+--- a/docs/concepts/cloud-agnostic.md
++++ b/docs/concepts/cloud-agnostic.md
+@@ -13 +13 @@ Use abstraction layers or APIs to interact with cloud services, so that the appl
+-#### Standardized APIs
++### Standardized APIs
+@@ -17 +17 @@ Leverage standard APIs and open standards whenever possible to ensure portabilit
+-#### Containerization and Orchestration
++### Containerization and Orchestration
+@@ -21 +21 @@ Use containerization technologies like Docker to package applications and their
+-#### Infrastructure as Code (IaC)
++### Infrastructure as Code (IaC)
+@@ -25 +25 @@ Define and manage infrastructure using code (IaC). Tools like Terraform or AWS C
+-#### Decentralized Data Storage
++### Decentralized Data Storage
+@@ -29 +29 @@ Avoid reliance on proprietary storage solutions by using standardized interfaces
+-#### Load Balancing and Autoscaling
++### Load Balancing and Autoscaling
+@@ -33 +33 @@ Implement load balancing and autoscaling mechanisms that are not tied to a speci
+-#### Monitoring and Logging
++### Monitoring and Logging
+@@ -40 +40 @@ Implement security measures and compliance controls that are independent of the
+-#### Multi-Cloud Strategy
++### Multi-Cloud Strategy
+diff --git a/docs/concepts/cloud-native.md b/docs/concepts/cloud-native.md
+index 047c2cc..d1f010e 100644
+--- a/docs/concepts/cloud-native.md
++++ b/docs/concepts/cloud-native.md
+@@ -15,4 +14,0 @@ Applications are broken down into smaller, independent services that can be deve
+-### Containers
+-
+-Containers encapsulate an application and its dependencies, providing a consistent and portable environment across different development and deployment stages. Technologies like Docker are commonly used for containerization.
+-
+@@ -22,0 +19,4 @@ Tools like Kubernetes are used to automate the deployment, scaling, and manageme
++### Containers
++
++Containers encapsulate an application and its dependencies, providing a consistent and portable environment across different development and deployment stages. Technologies like Docker are commonly used for containerization.
++
