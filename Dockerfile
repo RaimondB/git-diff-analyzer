@@ -13,8 +13,8 @@ RUN dotnet publish --runtime linux-musl-x64 -c Release --self-contained true -o 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/runtime:8.0-alpine
 
-RUN apt-get update && \
-    apg-get install -y --no-install-recommends git
+RUN apk update && \
+    apk add git
 
 #FROM alpine:3.18
 WORKDIR /App
