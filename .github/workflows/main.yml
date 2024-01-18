@@ -1,0 +1,18 @@
+on: [push]
+
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    name: Test the action
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Diff Analyzer
+        uses: ./ # Uses an action in the root directory
+        id: diff-analyze
+        with:
+          ld-threshold: 8
+          allowed-file-types: 'md'
+      # Use the output from the `hello` step
+      - name: Show the output
+        run: echo "The change was ${{ steps.diff-analyze.outputs.result }}"

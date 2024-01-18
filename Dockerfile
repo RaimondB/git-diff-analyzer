@@ -9,8 +9,13 @@ RUN dotnet restore
 #RUN dotnet publish -c Release -o out
 RUN dotnet publish --runtime linux-musl-x64 -c Release --self-contained true -o ./out
 
+
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/runtime:8.0-alpine
+
+RUN apt-get update && \
+    apg-get install -y --no-install-recommends git
+
 #FROM alpine:3.18
 WORKDIR /App
 
@@ -21,10 +26,10 @@ WORKDIR /App
 #   icu
 
 COPY --from=build-env /App/out .
+COPY --from=build-env /App/entrypoint.sh .
 #RUN chmod +x /App/git-diff-analyzer.dll
 
-ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
-ENV LD_LIBRARY_PATH=/usr/local/lib
+#ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
+#ENV LD_LIBRARY_PATH=/usr/local/lib
 
-#ENTRYPOINT ["/App/git-diff-analyzer.dll"]
-ENTRYPOINT ["dotnet", "git-diff-analyzer.dll"]
+ENTRYPOINT ["/entrypoint.sh"]
