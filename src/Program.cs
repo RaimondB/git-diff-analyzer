@@ -10,15 +10,19 @@ class Program
         [Option('f', "filePath", Required = true, HelpText = "File path of git diff file to analyze.")]
         public string FilePath { get; set; }
 
+        [Option('o', "outputFilePath", Required = true, HelpText = "File path of the output file containing the results.")]
+        public string OutputFilePath { get; set; }
+
         [Option('t', "threshold", Required = false, Default = 10, HelpText = "Threshold of Levenshtein distance to use to mark a significant change.")]
         public int Threshold { get; set; }
 
-        [Option('v', "verbose", Required = false, Default = false, HelpText = "Adds details about the changeblocks in each file to the output.")]
+        [Option('v', "verbose", Required = false, Default = false, HelpText = "Adds details about the change blocks in each file to the output.")]
         public bool Verbose { get; set; }
-    }
 
-    //TODO: Add explanation of the git command to run for the diff file
-    // git diff --unified=0 --diff-algorithm=minimal > gitdiff.txt
+        [Option('e', "filetypes", Required = false, Default = "md", HelpText = "Defines the filetypes that will be analyzed. Non-matching files will result in a considerable impact level directly.")]
+        public IEnumerable<string> FileTypeToScan { get; set; }
+
+    }
 
     public static async Task<int> Main(string[] args)
     {
@@ -32,7 +36,11 @@ class Program
   static async Task<int> RunAsync(Options options)
   {
         Console.WriteLine($"Evaluate Diff file: '{options.FilePath}'");
+        Console.WriteLine($"Output Filepath: '{options.OutputFilePath}'");
         Console.WriteLine($"Threshold: '{options.Threshold}'");
+
+        Console.WriteLine($"Verbose: '{options.Verbose}'");
+        Console.WriteLine($"Filetypes part of analysis: '{String.Join(",", options.FileTypeToScan)}'");
 
         var analyzer = new Analyzer(options.FilePath, 10);
 
@@ -44,7 +52,7 @@ class Program
         {
             // Validate if the Levenshtein distance is larger than the configured threshold, if so the change is considered significant
     
-            var fileHasSignificantChanges = result.HasSignificantChanges(options.Threshold);
+            var fileHasSignificantChanges = result.HasSignificantChanges(options.Threshold, options.FileTypeToScan);
             diffHasSignificantChanges |= fileHasSignificantChanges;
 
             var maxDistance = result.MaxDistance();
@@ -69,7 +77,19 @@ class Program
             } 
         }
 
+        await WriteOutputToFileAsync(options.OutputFilePath, diffHasSignificantChanges, results.Max(r => r.MaxDistance()));
+
         Console.WriteLine($"Done");
-        return diffHasSignificantChanges ? 1 : 0;
+        return 0;
+  }
+
+  // Create a function to write the output to a file
+  static  async Task WriteOutputToFileAsync(string outputFilePath, bool hasSignificantChanges, int maxDistance)
+  {
+        using(var writer = new StreamWriter(outputFilePath))
+        {
+            await writer.WriteLineAsync($"impact-level={(hasSignificantChanges ? "considerable" : "low")}");	
+            await writer.WriteLineAsync($"max-ld-distance={maxDistance}");
+        }
   }
 }

@@ -20,7 +20,28 @@ public class FileChange
 {
     public string FileName { get; set; }
 
-    public bool HasSignificantChanges(int threshold) => ChangeBlocks != null ? ChangeBlocks.Any(cb => cb.Distance > threshold) : false;
+    public bool HasSignificantChanges(int threshold, IEnumerable<string> fileTypesToScan)
+    {
+        bool isScannedFileType = true;
+
+        if(fileTypesToScan != null && fileTypesToScan.Any())
+        {
+            var extension = Path.GetExtension(this.FileName);
+
+            isScannedFileType = fileTypesToScan.Contains(extension);
+        }
+
+        if(!isScannedFileType)
+        {
+            // Always mention significant changes for files that are not part of the scanned file types
+            return true;
+        }
+        else
+        {
+            // For scanned filetypes, check the threshold
+            return ChangeBlocks != null ? ChangeBlocks.Any(cb => cb.Distance > threshold) : false;
+        }
+    } 
 
     public int MaxDistance() => ChangeBlocks != null ? ChangeBlocks.Max(cb => cb.Distance) : 0;
 

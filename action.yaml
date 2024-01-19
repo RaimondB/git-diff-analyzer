@@ -7,13 +7,15 @@ inputs:
     required: true
     default: '10'
   allowed-file-types:  # id of input
-    description: 'The file types to be analyzed. Provide the extensions as a comma separated list. 
-                  Example: js,ts,jsx,tsx,css,scss,html,md. If other types of files are found, the level of impact will automatically be set to considerable.'
+    description: 'The file types to be analyzed. Provide the extensions separated by whitespace. 
+                  Example: \'js html md\'. If other types of files are found, the level of impact will automatically be set to considerable.'
     required: true
     default: 'md'
 outputs:
   impact-level: # id of output
     description: 'The level of impact of the changes. Can be low or considerable'
+  max-ld-distance: # id of output
+    description: 'The maximum Levenshtein distance found in the changes'
 runs:
   using: 'docker'
   image: 'Dockerfile'

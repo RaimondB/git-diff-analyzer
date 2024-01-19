@@ -1,3 +1,3 @@
-# git-diff-analyzer
+# Git Diff Analyzer
 
-Analyzes gitdiff files to determine how impactful the change is
+This github action will look at th differences from the current branch towards the default branch and highlight based on the configuration if significant changes have taken place.

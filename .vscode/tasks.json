@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/git-diff-analyzer.csproj",
+                "${workspaceFolder}/src/git-diff-analyzer.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary;ForceNoAlign"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/git-diff-analyzer.csproj",
+                "${workspaceFolder}/src/git-diff-analyzer.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary;ForceNoAlign"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/git-diff-analyzer.csproj"
+                "${workspaceFolder}/src/git-diff-analyzer.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
