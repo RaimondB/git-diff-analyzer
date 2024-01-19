@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh -l
 
 # This script is used to run the analyzer on a set of files.
 
