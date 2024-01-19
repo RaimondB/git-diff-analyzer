@@ -9,6 +9,8 @@ echo "Working directory: $(pwd)"
 
 echo "Github Workspace: $GITHUB_WORKSPACE"
 
+ls -la
+
 # Create the output directory
 mkdir -p /github/workspace/testoutput
 
