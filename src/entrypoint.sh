@@ -7,7 +7,7 @@
 
 echo "Working directory: $(pwd)"
 
-echo "Github Workspace: $(GITHUB_WORKSPACE)"
+echo "Github Workspace: $GITHUB_WORKSPACE"
 
 # Create the output directory
 mkdir -p /github/workspace/testoutput
