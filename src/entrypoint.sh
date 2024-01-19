@@ -23,7 +23,7 @@ git status
 git diff --minimal main > /tmp/diff.txt
 
 ## Show diff file for debugging
-#cat /tmp/diff.txt
+cat /tmp/diff.txt
 
 # Run the analyzer on the diff
 /App/git-diff-analyzer -f /tmp/diff.txt -t $1 -e $2 -o $GITHUB_OUTPUT
