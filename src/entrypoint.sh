@@ -14,6 +14,8 @@ ls -la
 # Create the output directory
 mkdir -p /github/workspace/testoutput
 
+git status
+
 # Create a git diff for the current branch linked to the main branch
 # Remove unneeded whitepace for easier parsing
 git diff --minimal main > /tmp/diff.txt
