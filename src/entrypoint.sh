@@ -3,8 +3,11 @@
 # This script is used to run the analyzer on a set of files.
 
 # Set the working directory to the root of the repository
-cd /github/workspace
+#cd /github/workspace
+
 echo "Working directory: $(pwd)"
+
+echo "Github Workspace: $(GITHUB_WORKSPACE)"
 
 # Create the output directory
 mkdir -p /github/workspace/testoutput
