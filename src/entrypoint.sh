@@ -9,6 +9,8 @@ echo "Working directory: $(pwd)"
 
 echo "Github Workspace: $GITHUB_WORKSPACE"
 
+git config --global --add safe.directory /github/workspace
+
 ls -la
 
 # Create the output directory
