@@ -17,7 +17,7 @@ outputs:
     description: 'The maximum Levenshtein distance found in the changes'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: './src/Dockerfile'
   args:
     - ${{ inputs.ld-threshold }}
     - ${{ inputs.allowed-file-types }}
