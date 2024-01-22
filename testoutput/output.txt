@@ -1,2 +1,2 @@
-impact-level=considerable
-max-ld-distance=10
+impact-level=low
+max-ld-distance=0

@@ -20,7 +20,7 @@ class Program
         public bool Verbose { get; set; }
 
         [Option('e', "filetypes", Required = false, Default = "md", HelpText = "Defines the filetypes that will be analyzed. Non-matching files will result in a considerable impact level directly.")]
-        public IEnumerable<string> FileTypeToScan { get; set; }
+        public IEnumerable<string>? FileTypeToScan { get; set; }
 
     }
 
@@ -77,7 +77,9 @@ class Program
             } 
         }
 
-        await WriteOutputToFileAsync(options.OutputFilePath, diffHasSignificantChanges, results.Max(r => r.MaxDistance()));
+        var overallMaxDistance = results.Count > 0 ? results.Max(r => r.MaxDistance()) : 0;
+
+        await WriteOutputToFileAsync(options.OutputFilePath, diffHasSignificantChanges, overallMaxDistance);
 
         Console.WriteLine($"Done");
         return 0;
@@ -86,7 +88,7 @@ class Program
   // Create a function to write the output to a file
   static  async Task WriteOutputToFileAsync(string outputFilePath, bool hasSignificantChanges, int maxDistance)
   {
-        using(var writer = new StreamWriter(outputFilePath))
+        using(var writer = new StreamWriter(outputFilePath, new FileStreamOptions { Mode = FileMode.OpenOrCreate, Access = FileAccess.Write}))
         {
             await writer.WriteLineAsync($"impact-level={(hasSignificantChanges ? "considerable" : "low")}");	
             await writer.WriteLineAsync($"max-ld-distance={maxDistance}");
