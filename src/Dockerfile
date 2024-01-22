@@ -48,11 +48,6 @@ COPY --from=build-env /App/bin/Release/net8.0/linux-musl-x64/publish .
 COPY --from=build-env /App/entrypoint.sh /entrypoint.sh
 
 RUN chmod +x /entrypoint.sh
-RUN mkdir -p /github/workspace
-
-# Make the mount considered to be safe
-# https://stackoverflow.com/questions/73485958/how-to-correct-git-reporting-detected-dubious-ownership-in-repository-withou
-RUN git config --global safe.directory /github/workspace
 
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=true
 #ENV LD_LIBRARY_PATH=/usr/local/lib

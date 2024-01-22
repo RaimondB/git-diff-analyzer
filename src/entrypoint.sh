@@ -9,21 +9,20 @@ echo "Working directory: $(pwd)"
 
 echo "Github Workspace: $GITHUB_WORKSPACE"
 
-git config --global --add safe.directory /github/workspace
+# Configure the workspace as safe so it will allow to execute git commands properly
+# Otherwise, the git commands will fail with a "fatal: not a git repository" error
+# https://stackoverflow.com/questions/73485958/how-to-correct-git-reporting-detected-dubious-ownership-in-repository-withou
+git config --global --add safe.directory $GITHUB_WORKSPACE
 
-ls -la
-
-# Create the output directory
-mkdir -p /github/workspace/testoutput
-
+# Show the current branch
 git status
 
 # Create a git diff for the current branch linked to the main branch
 # Remove unneeded whitepace for easier parsing
 git diff --minimal main > /tmp/diff.txt
 
-## Show diff file for debugging
-cat /tmp/diff.txt
+# Show diff file for debugging
+#cat /tmp/diff.txt
 
 # Run the analyzer on the diff
-/App/git-diff-analyzer -f /tmp/diff.txt -t $1 -e $2 -o $GITHUB_OUTPUT
+/App/git-diff-analyzer -f /tmp/diff.txt -t $1 -e $2 -o $GITHUB_OUTPUT >> $GITHUB_STEP_SUMMARY

@@ -20,4 +20,4 @@ jobs:
           allowed-file-types: 'md'
       # Use the output from the previous step
       - name: Show the output
-        run: echo "The change was ${{ steps.diff-analyze.outputs.impact-level }}"
+        run: echo "The change was impact-level ${{ steps.diff-analyze.outputs.impact-level }}"
