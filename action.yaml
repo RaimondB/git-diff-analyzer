@@ -4,11 +4,11 @@ description: 'Assess the changes that have been made to be able to determine the
 inputs:
   ld-threshold:  # id of input
     description: 'The maximum Levenshtein distance allowed for the changes to be considered as low impact'
-    required: true
+    required: false
     default: '10'
   allowed-file-types:  # id of input
     description: 'The file types to be analyzed. Provide the extensions separated by whitespace. Example: "js html md". If other types of files are found, the level of impact will automatically be set to considerable.'
-    required: true
+    required: false
     default: 'md'
 outputs:
   impact-level: # id of output

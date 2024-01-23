@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "git-diff-analyzer", "git-diff-analyzer.csproj", "{EDFCA45F-A9F3-4BB3-91FF-D5C63F7AD6AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitDiffAnalyzer", "GitDiffAnalyzer.csproj", "{EDFCA45F-A9F3-4BB3-91FF-D5C63F7AD6AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

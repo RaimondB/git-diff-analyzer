@@ -3,7 +3,7 @@ using CommandLine;
 
 namespace GitDiffAnalyzer;
 
-class Program
+public class Program
 {
     public class Options
     {
@@ -33,7 +33,7 @@ class Program
         return retValue;
     }
 
-  static async Task<int> RunAsync(Options options)
+  public static async Task<int> RunAsync(Options options)
   {
         Console.WriteLine($"Evaluate Diff file: '{options.FilePath}'");
         Console.WriteLine($"Output Filepath: '{options.OutputFilePath}'");
@@ -42,7 +42,7 @@ class Program
         Console.WriteLine($"Verbose: '{options.Verbose}'");
         Console.WriteLine($"Filetypes part of analysis: '{String.Join(",", options.FileTypeToScan)}'");
 
-        var analyzer = new Analyzer(options.FilePath, 10);
+        var analyzer = new Analyzer(options.FilePath);
 
         var results = await analyzer.AnalyzeSignificantChangesAsync();
 

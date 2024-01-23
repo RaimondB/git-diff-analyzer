@@ -19,10 +19,13 @@ git status
 
 # Create a git diff for the current branch linked to the main branch
 # Remove unneeded whitepace for easier parsing
-git diff --minimal main > /tmp/diff.txt
+git diff --minimal $GITHUB_REF > /tmp/diff.txt
 
 # Show diff file for debugging
+#echo "Diff file start ------------------------------"	
 #cat /tmp/diff.txt
+#echo "Diff file end ------------------------------"	
 
 # Run the analyzer on the diff
-/App/git-diff-analyzer -f /tmp/diff.txt -t $1 -e $2 -o $GITHUB_OUTPUT >> $GITHUB_STEP_SUMMARY
+/App/GitDiffAnalyzer -f /tmp/diff.txt -t $1 -e $2 -o $GITHUB_OUTPUT 
+#>> $GITHUB_STEP_SUMMARY

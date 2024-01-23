@@ -41,12 +41,14 @@ public class FileChange
             // For scanned filetypes, check the threshold
             return ChangeBlocks != null ? ChangeBlocks.Any(cb => cb.Distance > threshold) : false;
         }
-    } 
+    }
 
-    public int MaxDistance() => ChangeBlocks != null ? ChangeBlocks.Max(cb => cb.Distance) : 0;
+    private bool HasChangeBlocks => ChangeBlocks != null && ChangeBlocks.Any();
 
-    public int TotalAdded => ChangeBlocks != null ? ChangeBlocks.Sum(cb => cb.AddedLines.Count) : 0;
-    public int TotalRemoved => ChangeBlocks != null ? ChangeBlocks.Sum(cb => cb.RemovedLines.Count) : 0;
+    public int MaxDistance() => HasChangeBlocks ? ChangeBlocks.Max(cb => cb.Distance ) : 0;
+
+    public int TotalAdded => HasChangeBlocks ? ChangeBlocks.Sum(cb => cb.AddedLines.Count) : 0;
+    public int TotalRemoved => HasChangeBlocks ? ChangeBlocks.Sum(cb => cb.RemovedLines.Count) : 0;
 
     public int NrOfChangeBlocks => ChangeBlocks != null ? ChangeBlocks.Count : 0;
 

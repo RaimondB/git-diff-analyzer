@@ -5,18 +5,15 @@ namespace GitDiffAnalyzer;
 public class Analyzer
 {
     private string _filePath { get; set;}
-    private int _threshold { get; set;}
 
     private enum State
     {
         FileSection,
         FileName,
-        ChangeBlock,
-        RemovedLines,
-        AddedLines
+        ChangeBlock
     }
 
-    public Analyzer(string filePath, int threshold)
+    public Analyzer(string filePath)
     {
         _filePath = Path.GetFullPath(filePath);
     }

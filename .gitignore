@@ -17,6 +17,8 @@ _ReSharper*/
 # Ignore dotnet test results
 TestResults/
 
+testoutput/
+
 # Ignore Visual Studio Code settings
 .vscode/**
 !.vscode/tasks.json
