@@ -25,3 +25,4 @@ runs:
   args:
     - ${{ inputs.ld-threshold }}
     - ${{ inputs.allowed-file-types }}
+    - ${{ inputs.git-base-ref }}
