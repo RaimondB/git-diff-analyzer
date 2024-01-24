@@ -7,7 +7,7 @@
 
 echo "Working directory: $(pwd)"
 
-echo "Github Workspace: $GITHUB_WORKSPACE"
+echo "Base reference for comparion: $3"
 
 # Configure the workspace as safe so it will allow to execute git commands properly
 # Otherwise, the git commands will fail with a "fatal: not a git repository" error
@@ -19,7 +19,7 @@ git status
 
 # Create a git diff for the current branch linked to the main branch
 # Remove unneeded whitepace for easier parsing
-git diff --minimal $GITHUB_REF > /tmp/diff.txt
+git diff --minimal $3 > /tmp/diff.txt
 
 # Show diff file for debugging
 #echo "Diff file start ------------------------------"	
