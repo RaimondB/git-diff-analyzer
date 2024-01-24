@@ -2,6 +2,25 @@
 
 # This script is used to run the analyzer on a set of files.
 
+# Check if all arguments are provided
+if [ -z "$1" ]; then
+    echo "Error: Arg(1) Threshold not provided."
+    echo "Usage: ./entrypoint.sh <threshold> <excluded_files> <base_reference>"
+    exit 1
+fi
+
+if [ -z "$2" ]; then
+    echo "Error: Arg(2) Analyzed File Extensions not provided."
+    echo "Usage: ./entrypoint.sh <threshold> <excluded_files> <base_reference>"
+    exit 1
+fi
+
+if [ -z "$3" ]; then
+    echo "Error: Arg(3) Base Reference for git diff not provided."
+    echo "Usage: ./entrypoint.sh <threshold> <excluded_files> <base_reference>"
+    exit 1
+fi
+
 # Set the working directory to the root of the repository
 #cd /github/workspace
 
@@ -27,5 +46,8 @@ git diff --minimal $3 > /tmp/diff.txt
 #echo "Diff file end ------------------------------"	
 
 # Run the analyzer on the diff
-/App/GitDiffAnalyzer -f /tmp/diff.txt -t $1 -e $2 -o $GITHUB_OUTPUT 
+/App/GitDiffAnalyzer -f /tmp/diff.txt -t $1 -e $2 -o $GITHUB_OUTPUT
+EXIT_CODE=$?
+echo "Exit code: $EXIT_CODE"
+exit $EXIT_CODE
 #>> $GITHUB_STEP_SUMMARY
