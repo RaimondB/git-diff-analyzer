@@ -13,7 +13,7 @@ inputs:
   git-base-ref:  # id of input
     description: 'The git base ref to compare against. Default is $GITHUB_BASE_REF'
     required: false
-    default: '${{ github.base_ref }}'
+    default: ${{ github.base_ref }}
 outputs:
   impact-level: # id of output
     description: 'The level of impact of the changes. Can be low or considerable'
