@@ -54,5 +54,10 @@ git diff --minimal $3 > /tmp/diff.txt
 /App/GitDiffAnalyzer -f /tmp/diff.txt -t $1 -e $2 -o $GITHUB_OUTPUT
 EXIT_CODE=$?
 echo "Exit code: $EXIT_CODE"
+if grep -q "impact-level=low" "$GITHUB_OUTPUT"; then
+    echo "::set-output name=action_result::success"
+else
+    echo "::set-output name=action_result::neutral"
+fi
 exit $EXIT_CODE
 #>> $GITHUB_STEP_SUMMARY
