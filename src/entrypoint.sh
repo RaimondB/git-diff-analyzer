@@ -34,7 +34,7 @@ echo "Base reference for comparion: $3"
 git config --global --add safe.directory $GITHUB_WORKSPACE
 
 # Make sure the base reference is available for comparison
-git fetch origin $3
+git fetch origin $3:$3
 
 # Show the current branch
 git status
