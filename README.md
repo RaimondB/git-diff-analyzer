@@ -16,11 +16,15 @@ The impact level is returned as output, so it can be used in your workflow, e.g.
 
 ## `ld-threshold`
 
-**Required** The maximum Levenshtein distance allowed for the changes to be considered as low impact. Default `10`.
+**Optional** The maximum Levenshtein distance allowed for the changes to be considered as low impact. Default `10`.
 
 ## `allowed-file-types`
 
-**Required** The types of files that are analyzed. Default `md`.
+**Optional** The types of files that are analyzed. Default `md`.
+
+## `git-base-ref`
+
+**Optional** The git base ref to compare against. Default is $GITHUB_BASE_REF, but this is only filled for pull requests. For use in other scenarios, define the base yourself.
 
 ## Outputs
 
