@@ -20,7 +20,6 @@ jobs:
         with:
           ld-threshold: 8
           allowed-file-types: 'md'
-          #git-base-ref: ${{ github.base_ref }}
       # Use the output from the previous step
       - name: Show the output
         run: echo "The change was impact-level ${{ steps.diff-analyze.outputs.impact-level }}"
