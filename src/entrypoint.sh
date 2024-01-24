@@ -1,6 +1,8 @@
 #!/bin/sh -l
-
 # This script is used to run the analyzer on a set of files.
+
+# Exit script on non-zero command exit status
+set -e
 
 # Check if all arguments are provided
 if [ -z "$1" ]; then
