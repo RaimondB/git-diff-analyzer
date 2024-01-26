@@ -1,0 +1,14 @@
+{
+    "problemMatcher": [
+        {
+            "owner": "diff-analyzer",
+            "pattern": [
+                {
+                    "regexp": "^File: (.+)|\\s.*| (Significant changes: True)$",
+                    "file": 1,
+                    "message": 2
+                }
+            ]
+        }
+    ]
+}
