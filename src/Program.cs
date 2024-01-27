@@ -57,8 +57,7 @@ public class Program
 
             var maxDistance = result.MaxDistance();
 
-            Console.WriteLine();
-            Console.WriteLine($"File: {result.FileName} | Blocks: {result.NrOfChangeBlocks} | Added Lines: {result.TotalAdded} | Removed Lines: {result.TotalRemoved} | Max Distance: {maxDistance} | Significant changes: {fileHasSignificantChanges}");
+            Console.WriteLine($"File: {result.FileName} | FileName: {result.FileName} | Blocks: {result.NrOfChangeBlocks} | Added Lines: {result.TotalAdded} | Removed Lines: {result.TotalRemoved} | Max Distance: {maxDistance} | Significant changes: {fileHasSignificantChanges}");
 
             if(options.Verbose)
             {

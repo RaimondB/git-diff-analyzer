@@ -18,6 +18,7 @@ _ReSharper*/
 TestResults/
 
 testoutput/
+.github/tmp/
 
 # Ignore Visual Studio Code settings
 .vscode/**

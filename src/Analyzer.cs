@@ -93,8 +93,10 @@ public class Analyzer
     {
         if(line.StartsWith("diff --git"))
         {
-            var fileName = line.Split(" ")[2];
-            return fileName;
+            //Get the new file name (the one with the b/ prefix)
+            var fileName = line.Split(" ")[3];
+            //Remove the b/
+            return fileName[2..];
         }
         else
         {

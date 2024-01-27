@@ -1,0 +1,15 @@
+{
+    "problemMatcher": [
+        {
+            "owner": "diff-analyzer",
+            "severity": "warning",
+            "pattern": [
+                {
+                    "regexp": "^File:\\s*(.+?)\\|(.*Significant changes: True)\\s*$",
+                    "file": 1,
+                    "message": 2
+                }
+            ]
+        }
+    ]
+}
