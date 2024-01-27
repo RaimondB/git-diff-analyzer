@@ -59,7 +59,7 @@ echo "::group::Run Analysis"
 MATCHERNAME=$(mktemp)
 echo "::debug::Matcher name: $MATCHERNAME"
 
-MATCHERPATH=$GITHUB_WORKSPACE/.github/tmp/
+MATCHERPATH=$GITHUB_WORKSPACE/.github/tmp
 
 mkdir -p $MATCHERPATH
 

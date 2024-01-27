@@ -17,7 +17,7 @@ _ReSharper*/
 # Ignore dotnet test results
 TestResults/
 
-./testoutput/
+testoutput/
 .github/tmp/
 
 # Ignore Visual Studio Code settings
