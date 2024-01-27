@@ -56,7 +56,16 @@ echo "::endgroup::"
 
 echo "::group::Run Analysis"
 
-echo "::add-matcher::/App/diff-analyze-matcher.json"  
+MATCHERNAME=$(mktemp)
+echo "::debug::Matcher name: $MATCHERNAME"
+
+MATCHERPATH=$GITHUB_WORKSPACE/.github/tmp/
+
+mkdir -p $MATCHERPATH
+
+cp /App/diff-analyze-matcher.json $MATCHERPATH
+
+echo "::add-matcher::$MATCHERPATH/diff-analyze-matcher.json"  
 
 # Run the analyzer on the diff
 /App/GitDiffAnalyzer -f /tmp/diff.txt -t $1 -e $2 -o $GITHUB_OUTPUT
