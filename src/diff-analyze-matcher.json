@@ -2,6 +2,7 @@
     "problemMatcher": [
         {
             "owner": "diff-analyzer",
+            "severity": "warning",
             "pattern": [
                 {
                     "regexp": "^File:\\s*(.+?)\\|(.*)\\s*$",
