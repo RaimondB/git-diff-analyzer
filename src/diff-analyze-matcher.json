@@ -2,9 +2,11 @@
     "problemMatcher": [
         {
             "owner": "diff-analyzer",
+            "severity": "info",
+            "line": 1,
             "pattern": [
                 {
-                    "regexp": "^File: (.+)|\\s.*| (Significant changes: True)$",
+                    "regexp": "^File:\\s*(.+?)\\|(.*)\\s*$",
                     "file": 1,
                     "message": 2
                 }
